@@ -12,6 +12,7 @@ import Select from "../components/Select";
 import Input from "../components/Input";
 import AuthLayout  from "./AuthLayout";
 import ImageOverlapCard from '../components/Cards/ImageOverlapCard'
+import HorizontalCard from "./Cards/HorizontalCard";
 
 export {
     Header,
@@ -28,4 +29,5 @@ export {
     Input,
     AuthLayout,
     ImageOverlapCard,
+    HorizontalCard,
 }
