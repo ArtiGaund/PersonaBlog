@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import appwriteService from '../backendAppwrite/config'
-import {Container, ImageOverlapCard} from '../components/index'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import {Container, Divider } from '../components/index'
+import HeroSection from './HomeSections/HeroSection'
+import FeaturedBlogSection from './HomeSections/FeaturedBlogSection';
+import RecentBlogSection from './HomeSections/RecentBlogSection';
 
-const Home = () => {
-
-    const [ posts, setPosts ] = useState([])
-    useEffect(() => {
-        appwriteService.getAllPost().then((posts) => {
-            if(posts){
-                setPosts(posts.documents)
-            }
-        })
-    }, [])
-    const navigate = useNavigate();
-    
+const Home = () => {    
     return (
-        <div className='w-full py-8'>
+        <div className='w-full bg-gray-900 min-h-screen'>
             <Container>
-                <div className='flex flex-col'>
+                {/* <div className='flex flex-col'>
                         <div className='flex items-center justify-center mb-10'>
                             <div>
                             <h1 className='text-[#98EC65] font-bold text-[5rem]'>
@@ -33,14 +23,19 @@ const Home = () => {
                         </div>
                         </div>
                         {/* Todo it's not responsive */}
-                        <div className='flex flex-row'>
+                        {/* <div className='flex flex-row'>
                             {posts.slice(0,4).map((post) => (
                                 <div className='p-2 w-full sm:w-full lg:w-1/2 xl:w-1/3' key={post.$id}>
                                     <ImageOverlapCard {...post}/>
                                 </div>
                             ))}
-                        </div>
-                </div>
+                        </div> */}
+                {/* </div> */} 
+                <HeroSection />
+                <Divider />
+                <FeaturedBlogSection />
+                <Divider />
+                <RecentBlogSection />
             </Container>
         </div>
     );

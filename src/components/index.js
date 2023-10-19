@@ -13,7 +13,8 @@ import Input from "../components/Input";
 import AuthLayout  from "./AuthLayout";
 import ImageOverlapCard from '../components/Cards/ImageOverlapCard'
 import HorizontalCard from "./Cards/HorizontalCard";
-
+import Divider from "./Divider";
+import CardNoImage from "./Cards/CardNoImage";
 export {
     Header,
     Footer,
@@ -30,4 +31,6 @@ export {
     AuthLayout,
     ImageOverlapCard,
     HorizontalCard,
+    Divider,
+   CardNoImage,
 }

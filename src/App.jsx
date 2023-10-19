@@ -1,6 +1,6 @@
 import { Header, Footer } from './components/index'
 import { Outlet } from 'react-router-dom'
-  import bg from '../src/images/bg1.jpg'
+  // import bg from '../src/images/bg1.jpg'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import  authService  from '../src/backendAppwrite/auth'
@@ -27,18 +27,18 @@ function App() {
     })
     .finally(() => setLoading(false))
   },[])
-  const styles = {
-    backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'repeat',
-    backgroundPostion: 'relative',
-    height: '100vh',
-    overflow: 'auto',
-  }
+  // const styles = {
+  //   backgroundImage: `url(${bg})`,
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'repeat',
+  //   backgroundPostion: 'relative',
+  //   height: '100vh',
+  //   overflow: 'auto',
+  // }
 
   return (
     <>
-      <div className='flex flex-col content-between min-h-screen w-screen' style={styles}>
+      <div className='flex flex-col content-between min-h-screen w-screen bg-gray-900'>
         <div className='w-full block'>
           <Header/>
             <main className='flex-grow min-h-[75vh] overflow-auto p-4'>

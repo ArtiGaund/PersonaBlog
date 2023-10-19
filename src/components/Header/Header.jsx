@@ -78,14 +78,14 @@ function Header(){
     
     return(
         <header className='py-5'>
-            <Container>
-                <Navbar className='mx-auto max-w-screen-xl px-4 py-2'>
+            <Container className='bg-gray-800'>
+                <Navbar className='mx-auto max-w-screen-xl px-4 py-2 bg-gray-700 border-transparent rounded-full'>
                     <div className='flex items-center justify-between text-blue-gray-900'>
                         <Typography
                         as="a"
                         href='/'
                         variant='h6'
-                        className='mr-4 cursor-pointer py-1.5 lg:ml-2'
+                        className='mr-4 cursor-pointer py-1.5 lg:ml-2 text-white'
                         onClick={() => navigate("/")}
                         >
                             Arti Gaund
@@ -105,7 +105,7 @@ function Header(){
                                     href="#"
                                     variant='small'
                                     color={active ? 'blue-gray' : 'gray'}
-                                    className='font-normal'
+                                    className='font-normal text-white border-transparent'
                                     onClick={()=> navigate(slug)}
                                     >
                                         <ListItem className='flex items-center gap-2 py-2 pr-4 font-bold' key={key}>
@@ -118,10 +118,10 @@ function Header(){
                        </div>
                        {!authStatus && (
                             <div className='hidden gap-2 lg:flex font-bold'>
-                                <Button variant='text' size='sm' color='blue-gray'
+                                <Button variant='text' size='sm' color='pink'
                                 onClick={() => navigate("/login")}>Sign In</Button>
-                                <Button variant='gradient' size='sm'
-                                onClick={() => navigate("/signup")}>Sign Up</Button>
+                                <Button variant='gradient' size='sm' color='pink'
+                                onClick={() => navigate("/signup")} className='bg-pink-500'>Sign Up</Button>
                                 
                             </div>
                         )}
@@ -139,7 +139,7 @@ function Header(){
                         onClick={()=> setOpenNav(!openNav)}
                         >
                             {openNav ? 
-                            <XMarkIcon className='h-6 w-6' strokeWidth={2}/> : <Bars3Icon className='h-6 w-6' strokeWidth={2}/>}
+                            <XMarkIcon color='white' className='h-6 w-6' strokeWidth={2}/> : <Bars3Icon color='white' className='h-6 w-6' strokeWidth={2}/>}
                         </IconButton>
                     </div>
                     <Collapse open={openNav}>
@@ -152,7 +152,7 @@ function Header(){
                                 href="#"
                                 variant='small'
                                 color={active ? 'blue-gray' : 'gray'}
-                                className='font-normal'
+                                className='font-normal text-white'
                                 onClick={()=> navigate(slug)}
                                 >
                                     <ListItem className='flex items-center gap-2 py-2 pr-4 font-bold'>
@@ -163,10 +163,10 @@ function Header(){
                             ))}
                         </List>
                         {!authStatus && (<div className='flex w-full flex-nowrap items-center gap-2 lg:hidden'>
-                            <Button variant='outlined' size='sm' color='blue-gray' fullWidth
+                            <Button variant='outlined' size='sm' color='pink' fullWidth
                             onClick={() => navigate("/login")}>Sign In</Button>
                             <Button variant='gradient' size='sm' fullWidth
-                            onClick={() => navigate("/signup")}>Sign Up</Button>
+                            onClick={() => navigate("/signup")} color='pink'>Sign Up</Button>
                         </div>)}
                         {authStatus && (
                             <div className='flex w-full flex-nowrap items-center gap-2 lg:hidden'>
