@@ -22,7 +22,8 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
-                return this.login({ email, password });
+               return await this.login({ email, password });
+               
             }
             else return userAccount;
         } catch (error) {
@@ -32,7 +33,13 @@ export class AuthService {
     async login({ email, password })
     {
         try {
-            return await this.account.createEmailSession(email,password);
+            const session = await this.account.createEmailSession(email,password);
+            if(session){
+                const sendingVerificationLink = await this.emailVerification()
+                if(sendingVerificationLink){
+                    return session
+                }
+            }
         } catch (error) {
             console.log("Appwrite authentication error :: login ",error);
         }
@@ -52,6 +59,29 @@ export class AuthService {
         } catch (error) {
             console.log("Appwrite authentication error :: logout ",error);
         }
+    }
+    async emailVerification(){
+        const url = "http://localhost:5173/profile"
+        return await this.account.createVerification(url).then((response) => {
+            console.log("Verification link has been sended to your email, please verify your account ",response);
+        })
+        .catch((error) => {
+            console.log("Verification link has not been sended ",error);
+        })
+    }
+    async confirmEmailVerification({ userId, secret }){
+        console.log("UserId ",userId)
+        console.log("Secret ",secret);
+        return await this.account.updateVerification( userId, secret ).then((response) => {
+            if(response.status === 'verified')
+                console.log("Email verification successful. User is now verified ")
+            else
+                console.log("Email verification failed. ");
+            console.log("Response ",response);
+        })
+        .catch((error) => {
+            console.log("Error occurred during email verification: ", error)
+        })
     }
     // function of forget password to be done
 }

@@ -12,6 +12,7 @@ import AllPosts from '../src/pages/AllPosts.jsx'
 import EditPost from '../src/pages/EditPost.jsx'
 import Post from '../src/pages/Post.jsx'
 import Signup from '../src/pages/Signup.jsx'
+import Profile from '../src/pages/Profile.jsx'
 import { ThemeProvider } from "@material-tailwind/react";
 
 const router = createBrowserRouter([
@@ -58,7 +59,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-post",
-        element: <AddPost />
+        element:( 
+        <AuthLayout>
+          {" "}
+        <AddPost />
+        </AuthLayout>
+        )
+      },
+      {
+        path: "/profile/:userId/:secret",
+        element:( 
+        // <AuthLayout>
+        <Profile />
+        //  </AuthLayout>
+        )
       }
     ]
   }

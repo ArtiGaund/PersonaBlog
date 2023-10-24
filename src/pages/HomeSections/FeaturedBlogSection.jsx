@@ -18,10 +18,13 @@ const FeaturedBlogSection = () => {
                 <span className='text-white font-bold'>Featured Post</span>
             </div>
             
-            <div className='flex flex-row'>
+            <div className='flex flex-wrap'>
                 {posts.slice(0,4).map((post) => (
-                    <div className='p-2 w-full sm:w-full lg:w-1/2 xl:w-1/3' key={post.$id}>
-                        <ImageOverlapCard {...post}/>
+                    <div className='p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4' key={post.$id}>
+                        <div className='h-full flex flex-col justify-between'>
+                             <ImageOverlapCard {...post}/>
+                        </div>
+                        
                     </div>
                 ))}
             </div> 

@@ -1,32 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Container, PostForm } from '../components/index'
+import React, { useEffect} from 'react';
+import { Container, PostForm } from '../components'
 import appwriteService from '../backendAppwrite/config'
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePost } from '../store/postSlice';
 
-const EditPost = () => {
-    const [ post, setPost ] = useState(null)
+function EditPost(){
+    //slug is needed, we need to take out values from url
     const { slug } = useParams()
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
+    const post = useSelector((state) => state.post.currentPost);
     // to bring all values so we need useEffect, if change in slug
     useEffect(() => {
-        if(slug){
-            appwriteService.getPost(slug).then((post) => {
-                if(post){
-                    setPost(post)
+        const fetchData = async () => {
+            try {
+                if(slug){
+                    const fetchedPost = await appwriteService.getPost(slug);
+                    if(fetchedPost){
+                        dispatch(updatePost(fetchedPost))
+                    }else{
+                        navigate("/")
+                    }
                 }
-            })
-        }else{
-            navigate("/")
+            } catch (error) {
+                console.log("Error fetching post: ",error);
+                navigate("/")
+            }
         }
-    }, [ slug, navigate])
-    return (
+        fetchData();
+    }, [ slug, navigate, dispatch])
+
+    return post ? (
         <div className='py-8'>
             <Container>
                 <PostForm post={post}/>
             </Container>
         </div>
-    );
+    ) : null
 };
 
 

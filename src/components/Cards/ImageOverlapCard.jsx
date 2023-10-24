@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import {
     Card, CardBody, CardHeader, Typography,
 } from "@material-tailwind/react"
-
-function ImageOverlapCard({ $id, title, Image }){
-
+import ImageCard from './ImageCard';
+import parse from 'html-react-parser'
+function ImageOverlapCard({ $id, title, Image, content }){
+    // const image = 
     return (
         <Link to={`/post/${$id}`}>
-            <Card
+            {/* <Card
             shadow={false}
             className='relative grid h-[30rem] w-full max-w-[28rem] items-end justify-center overflow-hidden text-center'>
                 <CardHeader
@@ -26,7 +27,7 @@ function ImageOverlapCard({ $id, title, Image }){
                         {title}
                     </Typography>
                 </CardBody>
-            </Card>
+            </Card> */}
             {/* <div className='text-gray-900 grid h-65 place-items-center bg-gray-400 antialiased rounded-xl'>
                 <img src={appwriteService.getFilePreview(Image)} alt={title}
                 className='w-65 h-65 object-cover object-center rounded-lg shadow-md'
@@ -39,6 +40,20 @@ function ImageOverlapCard({ $id, title, Image }){
                     </div>  
                 </div>
             </div> */}
+            <main style={{ display: 'flex', gap: '16px'}}>
+                <div className='card-container'>
+                    <ImageCard imgSrc={appwriteService.getFilePreview(Image)}>
+                        <h3 className='text-xl font-bold mb-2'>{title}</h3>
+                        <p>{parse(content)}</p>
+                        <div className='space-x-4 mt-4'>
+                            <button className='btn'>
+                            
+                            </button>
+                        </div>
+                    </ImageCard>
+                </div>
+                
+            </main>
         </Link>
         
     );

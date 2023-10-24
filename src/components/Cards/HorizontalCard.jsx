@@ -24,7 +24,7 @@ export default function HorizontalCard({ $id, title, Image, content, uploadYear 
             <Card className='mt-6 w-96 p-3 h-100 bg-gray-800'>
                 <CardHeader color='blue-gray' className='relative h-56'>
                     <img src={appwriteService.getFilePreview(Image)} alt={title}
-                    className='w-full h-full object-center object-cover'
+                    className='w-full h-full object-center object-cover '
                     />
                 </CardHeader>
                 <CardBody className='h-40 overflow-y-auto'>

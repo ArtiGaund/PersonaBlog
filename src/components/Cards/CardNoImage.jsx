@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import appwriteService from '../../backendAppwrite/config'
+// import appwriteService from '../../backendAppwrite/config'
 import parse from 'html-react-parser'
 
 function CardNoImage({ $id, title, content, uploadYear}){
@@ -25,7 +25,7 @@ function CardNoImage({ $id, title, content, uploadYear}){
                     <p className='text-white'>{parse(newContent)}</p>
                 </div>
                 <div>
-                    <a className='text-pink-500'>Read article </a>
+                    <div className='text-pink-500'>Read article </div>
                 </div>
                
             </div>
