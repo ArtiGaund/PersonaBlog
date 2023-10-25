@@ -6,12 +6,14 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { Logo } from '../components/index'
 import { data } from 'autoprefixer';
+
 import { Card, CardBody, CardHeader, Typography, Input, CardFooter, Button } from '@material-tailwind/react';
 const Signup = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [ error, setError ] = useState("")
     const { register, handleSubmit } = useForm();
+    
 
     const create = async(data) => {
         setError("")
@@ -20,7 +22,10 @@ const Signup = () => {
             if(userData){
                 // const userData = await authService.getCurrentUser()
                 // alert("Account has been successfully crea")
-                if(userData) dispatch(login(userData))
+                if(userData) {
+                    dispatch(login(userData))
+                   
+                }
                 // alert message that account is created
                 alert('Account have been successfully created')
                 navigate("/all-posts")

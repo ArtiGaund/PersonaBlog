@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import appwriteService from '../backendAppwrite/config'
 import { Container, HorizontalCard, Divider } from '../components/index'
+import authService from '../backendAppwrite/auth';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
 const AllPosts = () => {
    const [ posts, setPosts ] = useState([])
+   
    useEffect(()=> {
     appwriteService.getAllPost().then((posts) => {
         if(posts){
@@ -11,6 +14,37 @@ const AllPosts = () => {
         }
     })
    },[])
+
+//    useEffect(() => {
+//     const handleConfirmEmailVerification = async() => {
+//         try {
+//             console.log("User id inside handle function ",userId)
+//             console.log("Secret inside handle function ",secret)
+//             const userIdAsString = userId.toString();
+//             const secretAsString = secret.toString();
+//             const verified = await authService.confirmEmailVerification(userIdAsString,secretAsString)
+//             if(verified){
+//                 setEmailVerified(true)
+//                 console.log("Email verified by confirm Email verification method ")
+//             } else{
+//                 console.log("Value is not going into method")
+//             }
+           
+//         } catch (error) {
+//             console.log("Error in handle function ",error)
+//         }
+//     }
+//     if(userId && secret && !emailVerified){
+//         handleConfirmEmailVerification()
+//     }
+
+//     if(!emailVerified){
+//         const user = authService.getCurrentUser();
+//         if(user){
+//             setUser(user)
+//         }
+//     }
+//    }, [ userId, secret, emailVerified ])
     return (
         <Container>
         <div className='w-full py-8'>

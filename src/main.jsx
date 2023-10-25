@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "/profile/:userId/:secret",
+        path: "/profile",
         element:( 
         // <AuthLayout>
         <Profile />

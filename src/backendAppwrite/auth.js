@@ -70,14 +70,8 @@ export class AuthService {
         })
     }
     async confirmEmailVerification({ userId, secret }){
-        console.log("UserId ",userId)
-        console.log("Secret ",secret);
         return await this.account.updateVerification( userId, secret ).then((response) => {
-            if(response.status === 'verified')
-                console.log("Email verification successful. User is now verified ")
-            else
-                console.log("Email verification failed. ");
-            console.log("Response ",response);
+            console.log("Account verified successfully");
         })
         .catch((error) => {
             console.log("Error occurred during email verification: ", error)
