@@ -22,6 +22,7 @@ CardFooter,
 IconButton
 } from "@material-tailwind/react"
 import signin from "../images/signin.jpg"
+
 function Login(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -102,8 +103,7 @@ function Login(){
                             </div>
                             <div>
                                 <div className='flex flex-row items-center justify-center'>
-                                    <Checkbox></Checkbox>
-                                    <p className='flex pt-2 text-gray-600'> &nbsp; Forgot password ?</p>
+                                    <a className='flex pt-2 text-gray-600' href="/forgotpassword"> &nbsp; Forgot password ?</a>
                                 </div>
                             </div>
                             <div>

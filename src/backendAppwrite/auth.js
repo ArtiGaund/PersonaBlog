@@ -96,6 +96,10 @@ export class AuthService {
         })
     }
     async confirmPasswordRecovery({ userId, secret, new_password, confirm_password }){
+        console.log("User id ",userId)
+        console.log("secret ",secret)
+        console.log("password ",new_password)
+        console.log("confirm password ",confirm_password);
         return await this.account.updateRecovery( userId, secret, new_password, confirm_password)
         .then((response) => {
             console.log("Password has been updated successfully. Try login again");

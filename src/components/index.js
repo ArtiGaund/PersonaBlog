@@ -15,6 +15,8 @@ import ImageOverlapCard from '../components/Cards/ImageOverlapCard'
 import HorizontalCard from "./Cards/HorizontalCard";
 import Divider from "./Divider";
 import CardNoImage from "./Cards/CardNoImage";
+import PasswordRecovery from "./PasswordRecovery";
+import ForgotPassword from "./ForgotPassword";
 export {
     Header,
     Footer,
@@ -33,4 +35,6 @@ export {
     HorizontalCard,
     Divider,
    CardNoImage,
+   PasswordRecovery,
+   ForgotPassword,
 }

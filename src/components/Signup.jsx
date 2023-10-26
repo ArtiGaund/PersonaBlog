@@ -11,18 +11,7 @@ const Signup = () => {
     const dispatch = useDispatch()
     const [ error, setError ] = useState("")
     const { register, handleSubmit } = useForm();
-    const SignupUsingGithub = async() => {
-        setError("")
-        try {
-            const userData = await authService.gitHub()
-            if(userData) dispatch(login(userData))
-            alert("Account have been successfully created")
-            navigate("/all-post")
-        } catch (error) {
-            alert("There is error while login through github ");
-            console("Error in github configuration ",error);
-        }
-    }
+    
 
     const create = async(data) => {
         setError("")
@@ -105,7 +94,7 @@ const Signup = () => {
                             </div>
                             <div>
                                 <div className='flex flex-row justify-end'>
-                                    <span className='flex pt-2 text-blue-600'><a className=' cursor-pointer hover:text-blue-300 hover:underline'>Forgot password </a> ?</span>
+                                    <span className='flex pt-2 text-blue-600'><a className=' cursor-pointer hover:text-blue-300 hover:underline' href="/forgotpassword">Forgot password </a> ?</span>
                                 </div>
                             </div>
                             <div>

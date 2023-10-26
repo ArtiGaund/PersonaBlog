@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { RouterProvider, createBrowserRouter} from 'react-router-dom'
 import Home from '../src/pages/Home.jsx'
-import { Login, AuthLayout } from './components/index.js'
+import { Login, AuthLayout, PasswordRecovery, ForgotPassword } from './components/index.js'
 import AddPost from '../src/pages/AddPost.jsx'
 import AllPosts from '../src/pages/AllPosts.jsx'
 import EditPost from '../src/pages/EditPost.jsx'
@@ -65,6 +65,16 @@ const router = createBrowserRouter([
         </AuthLayout>
         )
       },
+      {
+        path: "/recovery",
+        element:( 
+          <PasswordRecovery />
+        )
+      },
+      {
+        path: "/forgotpassword",
+        element : <ForgotPassword />
+      }
     ]
   }
 ])
