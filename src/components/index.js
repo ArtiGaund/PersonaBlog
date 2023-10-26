@@ -15,7 +15,6 @@ import ImageOverlapCard from '../components/Cards/ImageOverlapCard'
 import HorizontalCard from "./Cards/HorizontalCard";
 import Divider from "./Divider";
 import CardNoImage from "./Cards/CardNoImage";
-import Profile from "./Profile";
 export {
     Header,
     Footer,
@@ -34,5 +33,4 @@ export {
     HorizontalCard,
     Divider,
    CardNoImage,
-   Profile,
 }

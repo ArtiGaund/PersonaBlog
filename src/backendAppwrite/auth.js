@@ -22,10 +22,15 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
-               return await this.login({ email, password });
-               
+               const session = await this.login({ email, password });
+               if(session){
+                const sendingVerificationLink = await this.emailVerification()
+                if(sendingVerificationLink){
+                    return session
+                }
             }
-            else return userAccount;
+            }
+            else return false;
         } catch (error) {
             console.log("Appwrite authentication error :: createAccount ",error);
         }
@@ -34,12 +39,7 @@ export class AuthService {
     {
         try {
             const session = await this.account.createEmailSession(email,password);
-            if(session){
-                const sendingVerificationLink = await this.emailVerification()
-                if(sendingVerificationLink){
-                    return session
-                }
-            }
+            return session;
         } catch (error) {
             console.log("Appwrite authentication error :: login ",error);
         }
@@ -61,7 +61,7 @@ export class AuthService {
         }
     }
     async emailVerification(){
-        const url = "http://localhost:5173/profile"
+        const url = "http://localhost:5173/all-posts"
         return await this.account.createVerification(url).then((response) => {
             console.log("Verification link has been sended to your email, please verify your account ",response);
         })
@@ -77,7 +77,33 @@ export class AuthService {
             console.log("Error occurred during email verification: ", error)
         })
     }
-    // function of forget password to be done
+    // async gitHub(){
+    //     return await this.account.createOAuth2Session( 'github', 'http://localhost:5173/profile', 'http://localhost:5173/signup')
+    //     .then((response) => {
+    //         console.log("Signup using github ",response)
+    //     })
+    //     .catch((error) => {
+    //         console.log("Signup using Github failed ",error);
+    //     })
+    // }
+    async createPasswordRecovery({ email }){
+        return await this.account.createRecovery(email, 'http://localhost:5173/recovery')
+        .then((response) => {
+            console.log("Recovery link has been sended to your mail check it, ",response)
+        })
+        .catch((error) => {
+            console.log("Error in sending link ",error)
+        })
+    }
+    async confirmPasswordRecovery({ userId, secret, new_password, confirm_password }){
+        return await this.account.updateRecovery( userId, secret, new_password, confirm_password)
+        .then((response) => {
+            console.log("Password has been updated successfully. Try login again");
+        })
+        .catch((error) => {
+            console.log("Error in password confirmation ",error);
+        })
+    }
 }
 // creating object of AuthService class and exporting it, so that methods of this class can be export easily
 // bz we are exporting object not class

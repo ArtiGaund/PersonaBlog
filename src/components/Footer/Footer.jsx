@@ -1,39 +1,77 @@
 import React from 'react';
 import {
-    Typography
+    Typography,
+    List,
+    ListItem,
 } from '@material-tailwind/react'
 import { Divider } from '../index'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
     const curDate = new Date();
     const curYear = curDate.getFullYear();
+    const authStatus = useSelector((state) => state.auth.status)
+    const navigate = useNavigate()
+    const navItems = [
+        {
+            name: "Home",
+            slug: "/",
+            active: true,
+            // icon: <HomeModernIcon className='h-[18px] w-[18px]'/>,
+            key: 1,
+        },
+        // {
+        //     name: "Login",
+        //     slug: "/login",
+        //     active: !authStatus,
+        // },
+        // {
+        //     name: "Signup",
+        //     slug: "/signup",
+        //     active: !authStatus,
+        // },
+        {
+            name: "All Posts",
+            slug: "/all-posts",
+            active: true,
+            // icon: <Square3Stack3DIcon className='h-[18px] w-[18px]'/>,
+            key: 2,
+        },
+        {
+            name: "Add Post",
+            slug: "/add-post",
+            active: authStatus,
+            // icon: <PhotoIcon className='h-[18px] w-[18px]'/>,
+            key: 3,
+        },
+    ]
     return (
         <div className='w-full bg-gray-900 bottom-0 py-6'>
             <Divider />
             <div className='flex'>
             <div className='flex-1'>
                 <div className='flex flex-row gap-4 ml-12'>
-                <Typography 
-
-                    className='text-white cursor-pointer hover:text-pink-700 hover:underline'>
-                    <Link to='/'>
-                    Home
-                    </Link>
-                    
-                    </Typography>
-                    <Typography 
-                    className='text-white cursor-pointer hover:text-pink-700 hover:underline'>
-                    <Link to='/all-posts'>
-                    All Posts
-                    </Link>
-                    </Typography>
-                    <Typography 
-                    className='text-white cursor-pointer hover:text-pink-700 hover:underline'>
-                    <Link to='/add-post'>
-                    Add Post
-                    </Link>
-                    </Typography>
+                <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
+                                {navItems.map(({ name, slug, active, key}) => (
+                                    active ?
+                                    <Typography
+                                    key={key}
+                                    as="a"
+                                    href="#"
+                                    variant='small'
+                                    color={active ? 'blue-gray' : 'gray'}
+                                    className='font-normal text-white border-transparent'
+                                    onClick={()=> navigate(slug)}
+                                    >
+                                        <ListItem className='flex items-center gap-2 py-2 pr-4 font-bold' key={key}>
+                                            {name}
+                                        </ListItem>
+                                    </Typography> : null
+                                ))}
+                            </List>
+                
                 </div>
                  
             </div>

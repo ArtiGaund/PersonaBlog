@@ -21,7 +21,7 @@ export default function HorizontalCard({ $id, title, Image, content, uploadYear 
     const newContent = content.length > maxLength ? content.substring(0,maxLength) + '...' : content
     return (
         <Link to={`/post/${$id}`}>
-            <Card className='mt-6 w-96 p-3 h-100 bg-gray-800'>
+            <Card className='mt-6 w-96 p-3 h-100 bg-gray-800 hover:scale-105'>
                 <CardHeader color='blue-gray' className='relative h-56'>
                     <img src={appwriteService.getFilePreview(Image)} alt={title}
                     className='w-full h-full object-center object-cover '

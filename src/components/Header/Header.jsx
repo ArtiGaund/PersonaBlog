@@ -73,7 +73,6 @@ function Header(){
             icon: <PhotoIcon className='h-[18px] w-[18px]'/>,
             key: 3,
         },
-        // Todo: add the account or profile page
     ]
     
     return(
