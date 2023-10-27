@@ -1,12 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import authService from '../backendAppwrite/auth';
+import { Container } from '../components/index'
 function ForgotPassword() {
     const { register, handleSubmit} = useForm();
     const sendVerificationMail = async(data) => {
         return authService.createPasswordRecovery(data);
     }
     return (
+        <Container>
         <form className='grid grid-flow-row gap-4 mt-8 md:grid-flow-row items-center justify-center'
                         onSubmit={handleSubmit(sendVerificationMail)}
                         >
@@ -27,6 +29,8 @@ function ForgotPassword() {
                                                     }
                                 })}
                                 />
+                            </div>
+                            <div>
                                 <button
                                     class="flex items-center justify-center w-[20rem] md:w-[30rem] px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 text-center">
                                     <span>Send Password Reset mail</span>
@@ -35,6 +39,7 @@ function ForgotPassword() {
                            
                             
                         </form>
+                        </Container>
     );
 };
 

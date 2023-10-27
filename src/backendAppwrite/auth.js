@@ -1,4 +1,5 @@
 // we have configured all the id's of appwrite database in conf/conf.js, so import that
+import { toast } from 'react-toastify';
 import conf from '../conf/conf';
 // some services from appwrite
 import { Client, Account, ID } from "appwrite";
@@ -32,6 +33,9 @@ export class AuthService {
             }
             else return false;
         } catch (error) {
+            toast.error(error,{
+                position: toast.POSITION.TOP_RIGHT
+            })
             console.log("Appwrite authentication error :: createAccount ",error);
         }
     }
@@ -63,10 +67,14 @@ export class AuthService {
     async emailVerification(){
         const url = "http://localhost:5173/all-posts"
         return await this.account.createVerification(url).then((response) => {
+            toast.info("Verification link has been send to your email, please verify your account by clicking on it!",{
+                position: toast.POSITION.TOP_RIGHT
+            })
             console.log("Verification link has been sended to your email, please verify your account ",response);
         })
         .catch((error) => {
             console.log("Verification link has not been sended ",error);
+            toast.error("Failed to send verification link. ")
         })
     }
     async confirmEmailVerification({ userId, secret }){
@@ -89,23 +97,30 @@ export class AuthService {
     async createPasswordRecovery({ email }){
         return await this.account.createRecovery(email, 'http://localhost:5173/recovery')
         .then((response) => {
+            toast.success("Password recovery link has been sended to your mail, please check it! ",{
+                position: toast.POSITION.TOP_RIGHT
+            })
             console.log("Recovery link has been sended to your mail check it, ",response)
         })
         .catch((error) => {
+            toast.error("Error in sending recovery link", {
+                position: toast.POSITION.TOP_RIGHT
+            })
             console.log("Error in sending link ",error)
         })
     }
     async confirmPasswordRecovery({ userId, secret, new_password, confirm_password }){
-        console.log("User id ",userId)
-        console.log("secret ",secret)
-        console.log("password ",new_password)
-        console.log("confirm password ",confirm_password);
         return await this.account.updateRecovery( userId, secret, new_password, confirm_password)
         .then((response) => {
-            console.log("Password has been updated successfully. Try login again");
+            toast.success("Password has been updated successfully. Try login again", {
+                position: toast.POSITION.TOP_RIGHT
+            });
         })
         .catch((error) => {
             console.log("Error in password confirmation ",error);
+            toast.error("Error in password confirmation", {
+                position: toast.POSITION.TOP_RIGHT
+            })
         })
     }
 }

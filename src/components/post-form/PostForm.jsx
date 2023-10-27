@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // importing postSlice
 import { createPost, updatePost } from '../../store/postSlice'
-import { CloudArrowUpIcon } from '@heroicons/react/24/outline'
+import { toast } from 'react-toastify';
 
 export default function PostForm({ post }){
     const curDate = new Date();
@@ -23,22 +23,26 @@ export default function PostForm({ post }){
             uploadYear: post?.uploadYear || curDate,
         },
     });
-    // console.log("Post data ",post);
+    console.log("Post data ",post);
     const navigate = useNavigate()
     // user data
     const userData = useSelector(state => state.auth.userData)
+    console.log("User data ",userData)
     
     // if user have submitted the form, then it must have pass the data
     const submit = async(data) => {
         //if post is present
         if(post){
             //doing update, handling file (data provide directly access to images in react hook form)
+            console.log("Post ",post);
             console.log("Post found");
+            console.log("data",data);
            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
+           console.log("File ",file);
            //deleting old image
            if(file) {
-            // post.featuredImage store file id's
-            appwriteService.deleteFile(post.featuredImage);
+            // post.Image store file id's
+            appwriteService.deleteFile(post.Image);
            }
            //updating the post
            // post.$id is slug
@@ -50,10 +54,13 @@ export default function PostForm({ post }){
             Image: file ? file.$id : undefined,
             
            });
+           console.log("dbPost ",dbPost);
            if(dbPost){
             navigate(`/post/${dbPost.$id}`);
             dispatch(updatePost(dbPost));
-            alert("Your post have been updated successfully")
+            toast.success("Your post have been updated successfully!",{
+                position: toast.POSITION.TOP_RIGHT
+            })
             }
         }
         else{
@@ -62,9 +69,9 @@ export default function PostForm({ post }){
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
             if(file){
                 const fileId = file.$id;
-                // console.log("FileId ",fileId)
+                console.log("FileId ",fileId)
                 data.Image =fileId;
-                // console.log("Image ",Image)
+                console.log("Image ",Image)
                 // sending other properties
                 // spread out id done bz when forms are created we don't have user data but we have userId field in 
                 // post, but we brought userData from store
@@ -77,7 +84,9 @@ export default function PostForm({ post }){
                     navigate(`/post/${dbPost.$id}`)
                     //dispatch the action with newly created post data
                         dispatch(createPost(dbPost));
-                    alert("Your new post have been uploaded successfully")
+                    toast.success("Your new post have been uploaded successfully",{
+                        position: toast.POSITION.TOP_RIGHT
+                    })
                 }
             }
         }

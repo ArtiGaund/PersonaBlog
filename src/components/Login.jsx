@@ -9,19 +9,8 @@ import { useDispatch } from 'react-redux'
 // form 
 import { useForm } from 'react-hook-form'
 import { Container } from '../components/index';
-
-import {
-Card,
-Input,
-Checkbox,
-Button,
-Typography,
-CardHeader,
-CardBody,
-CardFooter,
-IconButton
-} from "@material-tailwind/react"
 import signin from "../images/signin.jpg"
+import { toast } from 'react-toastify';
 
 function Login(){
     const navigate = useNavigate();
@@ -35,11 +24,15 @@ function Login(){
             if(session){
                 const userData = await authService.getCurrentUser()
                 if(userData) dispatch(authLogin(userData))
-                alert("Login successfully")
+                toast.success('Login successfully !', {
+                    position: toast.POSITION.TOP_RIGHT
+                })
                 navigate("/all-posts")
             }
         } catch (error) {
-            alert("Login failed")
+            toast.error('Login Failed !', {
+                position: toast.POSITION.TOP_RIGHT
+            })
             console.log("Login form :: error ",error)
             return false
         }

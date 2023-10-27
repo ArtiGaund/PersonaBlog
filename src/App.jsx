@@ -7,6 +7,7 @@ import  authService  from '../src/backendAppwrite/auth'
 import { login, logout } from '../src/store/authSlice'
 
 
+
 function App() {
   //we need loading state, when we fetch data from application so it will take some time for the network request 
   // so we need to ask something from database or network, its good to create loading state, we can do conditional rendering

@@ -52,7 +52,7 @@ const Footer = () => {
             <Divider />
             <div className='flex'>
             <div className='flex-1'>
-                <div className='flex flex-row gap-4 ml-12'>
+                <div className='flex flex-row gap-4 ml-12 sm:flex-row'>
                 <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
                                 {navItems.map(({ name, slug, active, key}) => (
                                     active ?

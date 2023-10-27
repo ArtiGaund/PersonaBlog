@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import authService from '../backendAppwrite/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../store/authSlice'
@@ -6,26 +6,29 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { Logo, Container } from '../components/index'
 import signup from "../images/signup.jpg"
+import { toast } from 'react-toastify';
 const Signup = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [ error, setError ] = useState("")
     const { register, handleSubmit } = useForm();
-    
 
     const create = async(data) => {
         setError("")
         try {
-            const userData = await authService.createAccount(data)
-            if(userData){
-                    dispatch(login(userData))
-                   
-                // alert message that account is created
-                alert('Account have been successfully created')
-                navigate("/all-posts")
-            }
+                const userData = await authService.createAccount(data)
+                if(userData){
+                        dispatch(login(userData))
+                    toast.success("Account created successfully !", {
+                        position: toast.POSITION.TOP_RIGHT
+                    })
+                    navigate("/all-posts")
+                }
+           
         } catch (error) {
-            alert("There is an error in registration form")
+           toast.error("There is an error to create an account. ", {
+            position: toast.POSITION.TOP_RIGHT
+           })
             console.log("Registration form :: error ",error);
         }
     }
