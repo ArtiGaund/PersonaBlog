@@ -70,7 +70,7 @@ function Header(){
             <Container className='bg-gray-800'>
                 <Navbar className='mx-auto max-w-screen-xl px-4 py-2 bg-gray-700 border-transparent rounded-full'>
                     <div className='flex items-center justify-between text-blue-gray-900'>
-                        <Typography
+                        {/* <Typography
                         as="a"
                         href='/'
                         variant='h6'
@@ -78,11 +78,11 @@ function Header(){
                         onClick={() => navigate("/")}
                         >
                             Arti Gaund
-                        </Typography>
-                        {/* <Link to="/">
+                        </Typography> */}
+                        <Link to="/">
                             <Logo width='70px'/>
-                        </Link> */}
-                        {/* navbar list */}
+                        </Link> 
+                        {/* {/* navbar list */}
                        <div className='hidden lg:block'>
                             {/* <NavList /> */}
                             <List className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
