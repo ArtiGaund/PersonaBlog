@@ -57,7 +57,7 @@ const Post = () => {
                { currentPost ? (
                 
                <div className='flex flex-col gap-8 justify-center'>
-                    <div className='flex flex-row pt-10'>
+                    <div className='flex flex-row pt-10 p-10'>
                         <div className='flex-1 justify-start items-start ml-20'>
                             <h1 className='text-white text-[4rem]'>{currentPost?.title}</h1>
                             {/* Footer for author and date of upload */}
