@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../images/logo.png'
 
 const Logo = ({ width = '100px'}) => {
     return (
