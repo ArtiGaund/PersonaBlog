@@ -22,7 +22,7 @@ function CardNoImage({ $id, title, content, uploadYear}){
                     <h2 className='text-2xl font-bold mb-2 text-white'>{title}</h2>  
                 </div>
                 <div>
-                    <p className='text-white'>{parse(newContent)}</p>
+                    <div className='text-white'>{parse(newContent)}</div>
                 </div>
                 <div>
                     <div className='text-pink-500'>Read article </div>

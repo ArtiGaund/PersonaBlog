@@ -16,7 +16,7 @@ function ForgotPassword() {
                                 <input
                                  type="email" 
                                  placeholder="Email" 
-                                 class="block w-[20rem] md:w-[30rem] px-5 py-3 mt-2 text-gray-700
+                                 className="block w-[20rem] md:w-[30rem] px-5 py-3 mt-2 text-gray-700
                                 placeholder-gray-600 bg-white border border-gray-200 rounded-md
                                 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300
                                 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400
@@ -32,7 +32,7 @@ function ForgotPassword() {
                             </div>
                             <div>
                                 <button
-                                    class="flex items-center justify-center w-[20rem] md:w-[30rem] px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 text-center">
+                                    className="flex items-center justify-center w-[20rem] md:w-[30rem] px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 text-center">
                                     <span>Send Password Reset mail</span>
                                 </button>
                             </div>

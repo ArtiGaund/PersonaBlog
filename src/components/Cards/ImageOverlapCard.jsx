@@ -10,7 +10,7 @@
                     <div className='card-container'>
                         <ImageCard imgSrc={appwriteService.getFilePreview(Image)}>
                             <h3 className='text-xl font-bold mb-2'>{title}</h3>
-                            <p>{parse(content)}</p>
+                            <div>{parse(content)}</div>
                             <div className='space-x-4 mt-4'>
                                 <button className='btn'>
                                 

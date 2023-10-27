@@ -70,7 +70,7 @@ useEffect(() => {
             <div className='mx-auto max-w-7xl px-6 lg:px-8 mt-4 mb-6 p-0'>
                 <div className='mx-auto max-w-2xl lg:mx-0'>
                     <h1 className='text-[12rem] font-bold tracking-tighter text-white sm:text-xl'>From the blog</h1>
-                    <p className='mt-2 text-lg leading-8 text-gray-600'>Learn how to grow by reading others blogs.</p>
+                    <div className='mt-2 text-lg leading-8 text-gray-600'>Learn how to grow by reading others blogs.</div>
                 </div>
             </div>
             
