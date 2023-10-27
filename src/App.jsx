@@ -1,6 +1,5 @@
 import { Header, Footer } from './components/index'
 import { Outlet } from 'react-router-dom'
-  // import bg from '../src/images/bg1.jpg'
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import  authService  from '../src/backendAppwrite/auth'
@@ -28,14 +27,7 @@ function App() {
     })
     .finally(() => setLoading(false))
   },[])
-  // const styles = {
-  //   backgroundImage: `url(${bg})`,
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'repeat',
-  //   backgroundPostion: 'relative',
-  //   height: '100vh',
-  //   overflow: 'auto',
-  // }
+
 
   return (
     <>

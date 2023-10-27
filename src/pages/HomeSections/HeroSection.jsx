@@ -20,7 +20,6 @@ const HeroSection = () => {
                             </Button>
                         </div>
                         </div>
-                        {/* Todo it's not responsive */}
                          
                 </div> 
         </div>

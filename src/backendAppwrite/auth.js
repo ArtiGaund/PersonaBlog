@@ -33,9 +33,6 @@ export class AuthService {
             }
             else return false;
         } catch (error) {
-            toast.error(error,{
-                position: toast.POSITION.TOP_RIGHT
-            })
             console.log("Appwrite authentication error :: createAccount ",error);
         }
     }

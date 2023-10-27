@@ -19,31 +19,18 @@ const Footer = () => {
             name: "Home",
             slug: "/",
             active: true,
-            // icon: <HomeModernIcon className='h-[18px] w-[18px]'/>,
             key: 1,
         },
-        // {
-        //     name: "Login",
-        //     slug: "/login",
-        //     active: !authStatus,
-        // },
-        // {
-        //     name: "Signup",
-        //     slug: "/signup",
-        //     active: !authStatus,
-        // },
         {
             name: "All Posts",
             slug: "/all-posts",
             active: true,
-            // icon: <Square3Stack3DIcon className='h-[18px] w-[18px]'/>,
             key: 2,
         },
         {
             name: "Add Post",
             slug: "/add-post",
             active: authStatus,
-            // icon: <PhotoIcon className='h-[18px] w-[18px]'/>,
             key: 3,
         },
     ]
@@ -115,7 +102,6 @@ const Footer = () => {
                         </svg>
                     </div>
                 </Link>
-                <span className='text-white flex-1 mr-20'>@ {curYear}</span>
             </div>
             </div>
         </div>

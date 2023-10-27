@@ -49,16 +49,6 @@ function Header(){
             icon: <HomeModernIcon className='h-[18px] w-[18px]'/>,
             key: 1,
         },
-        // {
-        //     name: "Login",
-        //     slug: "/login",
-        //     active: !authStatus,
-        // },
-        // {
-        //     name: "Signup",
-        //     slug: "/signup",
-        //     active: !authStatus,
-        // },
         {
             name: "All Posts",
             slug: "/all-posts",

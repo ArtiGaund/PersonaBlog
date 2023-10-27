@@ -23,22 +23,22 @@ export default function PostForm({ post }){
             uploadYear: post?.uploadYear || curDate,
         },
     });
-    console.log("Post data ",post);
+    // console.log("Post data ",post);
     const navigate = useNavigate()
     // user data
     const userData = useSelector(state => state.auth.userData)
-    console.log("User data ",userData)
+    // console.log("User data ",userData)
     
     // if user have submitted the form, then it must have pass the data
     const submit = async(data) => {
         //if post is present
         if(post){
             //doing update, handling file (data provide directly access to images in react hook form)
-            console.log("Post ",post);
-            console.log("Post found");
-            console.log("data",data);
+            // console.log("Post ",post);
+            // console.log("Post found");
+            // console.log("data",data);
            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
-           console.log("File ",file);
+        //    console.log("File ",file);
            //deleting old image
            if(file) {
             // post.Image store file id's
@@ -54,7 +54,7 @@ export default function PostForm({ post }){
             Image: file ? file.$id : undefined,
             
            });
-           console.log("dbPost ",dbPost);
+        //    console.log("dbPost ",dbPost);
            if(dbPost){
             navigate(`/post/${dbPost.$id}`);
             dispatch(updatePost(dbPost));
@@ -65,13 +65,13 @@ export default function PostForm({ post }){
         }
         else{
             // user is creating new form
-            console.log("Post not found")
+            // console.log("Post not found")
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
             if(file){
                 const fileId = file.$id;
-                console.log("FileId ",fileId)
+                // console.log("FileId ",fileId)
                 data.Image =fileId;
-                console.log("Image ",Image)
+                // console.log("Image ",Image)
                 // sending other properties
                 // spread out id done bz when forms are created we don't have user data but we have userId field in 
                 // post, but we brought userData from store
