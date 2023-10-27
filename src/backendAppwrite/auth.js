@@ -62,7 +62,8 @@ export class AuthService {
         }
     }
     async emailVerification(){
-        const url = "http://localhost:5173/all-posts"
+        // const url = "http://localhost:5173/all-posts"
+        const url = "https://persona-blog-kohl.vercel.app/all-posts"
         return await this.account.createVerification(url).then((response) => {
             toast.info("Verification link has been send to your email, please verify your account by clicking on it!",{
                 position: toast.POSITION.TOP_RIGHT
@@ -92,7 +93,9 @@ export class AuthService {
     //     })
     // }
     async createPasswordRecovery({ email }){
-        return await this.account.createRecovery(email, 'http://localhost:5173/recovery')
+        // const url = 'http://localhost:5173/recovery'
+        const url = 'https://persona-blog-kohl.vercel.app/recovery'
+        return await this.account.createRecovery(email, url)
         .then((response) => {
             toast.success("Password recovery link has been sended to your mail, please check it! ",{
                 position: toast.POSITION.TOP_RIGHT
