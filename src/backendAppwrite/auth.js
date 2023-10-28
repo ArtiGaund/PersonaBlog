@@ -28,6 +28,8 @@ export class AuthService {
                 const sendingVerificationLink = await this.emailVerification()
                 if(sendingVerificationLink){
                     return session
+                }else{
+                    return await this.account.deleteSession();
                 }
             }
             }
