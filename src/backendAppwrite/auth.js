@@ -66,7 +66,7 @@ export class AuthService {
     }
     async emailVerification(){
         // const url = "http://localhost:5173/all-posts"
-        const url = "https://persona-blogs-project.vercel.app/all-posts"
+        const url = "https://persona-blogs-project.vercel.app/all-posts#"
         return await this.account.createVerification(url).then((response) => {
             toast.info("Verification link has been send to your email, please verify your account by clicking on it!",{
                 position: toast.POSITION.TOP_RIGHT
