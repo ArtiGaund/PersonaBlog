@@ -35,6 +35,7 @@ const Footer = () => {
         },
     ]
     return (
+        <div style={{ overflowX: 'hidden'}}>
         <div className='bg-gray-900 bottom-0 py-6 min-w-fit'>
             <Divider />
             <div className='flex'>
@@ -104,6 +105,7 @@ const Footer = () => {
                 </Link>
             </div>
             </div>
+        </div>
         </div>
     );
 };
