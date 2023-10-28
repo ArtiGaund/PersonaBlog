@@ -35,7 +35,7 @@ const Footer = () => {
         },
     ]
     return (
-        <div className='w-full bg-gray-900 bottom-0 py-6'>
+        <div className='bg-gray-900 bottom-0 py-6 min-w-fit'>
             <Divider />
             <div className='flex'>
             <div className='flex-1'>
