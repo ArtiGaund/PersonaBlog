@@ -47,7 +47,6 @@ const Footer = () => {
                                     <Typography
                                     key={key}
                                     as="a"
-                                    href="#"
                                     variant='small'
                                     color={active ? 'blue-gray' : 'gray'}
                                     className='font-normal text-white border-transparent'
